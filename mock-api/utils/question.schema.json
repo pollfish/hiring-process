@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "Question Configuration",
+  "type": "object",
+  "properties": {
+    "prompt": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "answers": {
+      "type": "array",
+      "items": [{
+        "type": "object",
+        "required": ["body", "order"],
+        "properties": {
+          "body": {
+            "type": "string"
+          },
+          "order": {
+            "type": "integer"
+          }
+        }
+      }]
+    }
+  },
+  "description": "Question configuration object"
+}

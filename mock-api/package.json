@@ -1,0 +1,21 @@
+{
+  "name": "mock-api",
+  "version": "1.0.0",
+  "description": "A mock API to be used for helping develop the front-end assignment, allowing for fetching and storing simple json",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "generate-data": "node utils/cli-generate"
+  },
+  "author": "Nick Rossolatos",
+  "license": "MIT",
+  "dependencies": {
+    "ajv": "^6.6.2",
+    "dyson": "^2.0.3",
+    "faker": "^4.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}

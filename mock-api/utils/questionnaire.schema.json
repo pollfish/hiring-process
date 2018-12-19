@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "Questionnaire Configuration",
+  "type": "array",
+  "items": [{
+    "type": "object",
+    "required": ["prompt", "order", "answers"],
+    "properties": {
+      "prompt": {
+        "type": "string"
+      },
+      "order": {
+        "type": "integer"
+      },
+      "answers": {
+        "type": "array",
+        "items": [{
+          "type": "object",
+          "required": ["body", "order"],
+          "properties": {
+            "body": {
+              "type": "string"
+            },
+            "order": {
+              "type": "integer"
+            }
+          }
+        }]
+      }
+    }
+  }],
+  "description": "questions configuration object"
+}
