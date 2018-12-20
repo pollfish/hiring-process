@@ -49,12 +49,12 @@ The response object will contain a `success` property and a `data` or `message` 
 
 ### Authentication
 
-There is none. This is used locally, only for the purposes of the assignemtn and the data is kept in a text file! Adding authentication seemed overkill.
+There is none. This is used locally, only for the purposes of the assignment and the data is kept in a text file! Adding authentication seemed overkill.
 
 
 ### Client Errors
 
-[https://github.com/epoberezkin/ajv](The AJV) library is being used to validate the json schema of the data received per endpoint. If the validation fails for some reason it will result in a `400 Bad Request` HTTP Header with the response being 
+[The AJV](https://github.com/epoberezkin/ajv) library is being used to validate the json schema of the data received per endpoint. If the validation fails for some reason it will result in a `400 Bad Request` HTTP Header with the response being 
 ```js
 { success: false, message: 'Bad Request', error: 'Message explaining the error received' }
 ```
@@ -66,12 +66,21 @@ For the purposes of this assignment the only model that exists is that of a ques
 
 ex: 
 ```js
+Question Model
 {
   id: String, // provided always by the storage.
-  prompt: 'Title about the question',
-  order: Integer,
-  answers: [{ order: 1, body: 'Answer #1'}, { order: 2, body: 'Answer #2'}]
+  prompt: String, // the title of the question
+  order: Integer, // the order by which they should be shown
+  answers: Array[Answer]
 }
+
+Answer Model 
+{
+  order: Integer, // the order by which they should be shown
+  body: String // The title of the answer
+}
+
+
 ```
 
 ### List All Questions
@@ -201,7 +210,7 @@ ex:
 ```
 Status: 200 OK
 ```
-```json
+```js
 {
   "success": true,
   "data": [Question],
@@ -209,7 +218,7 @@ Status: 200 OK
 }
 ```
 
-### EDIT QUESTION
+### Edit Question
 
 You can edit an individual question by providing its id. You don't have to send all of the properties of a single question to edit only the `prompt` property for example. You can send only the `prompt` field (PUT Updates).
 
