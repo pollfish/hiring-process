@@ -6,7 +6,7 @@ const createNewQuestion = {
   path: constants.endpoints.QUESTIONS_POST,
   method: 'POST',
   render: (req, res, next) => {
-    if (shouldFail()) {
+    if (!req.query.debug && shouldFail()) {
       res.status(500).send({ success: false, message: 'Something went wrong.'})
       return;
     }
