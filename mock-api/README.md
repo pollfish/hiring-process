@@ -59,6 +59,10 @@ There is none. This is used locally, only for the purposes of the assignment and
 { success: false, message: 'Bad Request', error: 'Message explaining the error received' }
 ```
 
+### Server Errors
+
+To immitate real production use, some of the endpoints will fail with 500 errors at times. You are encouraged to try and gracefully handle them. If you don't want to handle these errors for any reason you can pass a parameter to each endpoint
+`?debug=true` and the endpoint will respect your wishes and not fail.
 
 ### Models
 
@@ -242,3 +246,12 @@ Status: 200 OK
   "message": "Question with id XXXX-xxxx-XxXx was updated successfully"
 }
 ```
+
+### Populating the Database
+
+Initially the "database" will be empty. If you want to start with some auto-generated questions you can run 
+```shell
+npm run generate-data
+```
+
+and a random number of questions 0-10 will be generated in the database.
