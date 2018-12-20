@@ -33,7 +33,7 @@ The dyson server will start in port 5000. Navigate to [http://localhost:5000](ht
 All API access is over HTTP (since it currently only works locally). All data is sent and received as JSON.
 
 ```shell
-curl -i http://localhost:5000/api/questionnaire
+curl -i http://localhost:5000/api/questions
 HTTP/1.1 200 OK
 X-Powered-By: Express
 Vary: Origin
