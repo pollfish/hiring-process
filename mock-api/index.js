@@ -14,7 +14,7 @@ console.log(`Dyson listening on port ${options.port}
 
 Available Endpoints:
 
-  GET http://localhost:5000/questionnaire               // gets a questionnaire
-  POST http://localhost:5000/questionnaire              // creates a questionnaire
-  PUT http://localhost:5000/question/:question_id       // edits a question by id
+  GET http://localhost:5000/api/questions                 // gets a questionnaire
+  POST http://localhost:5000/api/questionnaire            // creates a questionnaire
+  PUT http://localhost:5000/api/questions/:question_id    // edits a question by id
 `);
