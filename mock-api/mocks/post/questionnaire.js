@@ -13,7 +13,7 @@ const createNewQuestion = {
     const questions = req.body;
     try {
       storage.save(questions);
-      res.status(200).send({ success: true, message: `Saved successfully ${questions.length} questions`});
+      res.status(200).send({ success: true, message: `Saved successfully ${questions.length} questions`, data: storage.findAll()});
     } catch (err) {
       if (err.code === 418) {
         res.status(400).send({ success: false, message: `Bad Request`, error: err.message });
