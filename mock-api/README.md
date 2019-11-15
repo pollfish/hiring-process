@@ -3,7 +3,7 @@
 This is a companion mock-api that can be used together with the front-end assignment. It is built using dyson and contains a one-file-text database (yes, yes indeed).
 
 
-## Prequisites 
+## Prerequisites 
 
 You will need to have installed locally on your machine
 - Node (preferably version 8+)
