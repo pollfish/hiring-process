@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "prompt": "koukou",
+    "answers": [
+      "yes",
+      "no"
+    ],
+    "id": "2259dc7d-0358-4079-b05f-efd9ef0e9736"
+  }
+]

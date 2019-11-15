@@ -6,23 +6,11 @@
     "prompt": {
       "type": "string"
     },
-    "order": {
-      "type": "integer"
-    },
     "answers": {
       "type": "array",
-      "items": [{
-        "type": "object",
-        "required": ["body", "order"],
-        "properties": {
-          "body": {
-            "type": "string"
-          },
-          "order": {
-            "type": "integer"
-          }
-        }
-      }]
+      "items": {
+        "type": "string"
+      }
     }
   },
   "description": "Question configuration object"

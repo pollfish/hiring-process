@@ -8,10 +8,10 @@ const questions = {
   cache: false,
   render: (req, res, next) => {
     // Add this if you feel you want to also handle errors while getting data
-    // if (shouldFail()) {
-    //   res.status(500).send({ success: false, message: 'Something went wrong.'})
-    //   return;
-    // }
+    if (shouldFail(req.query)) {
+      res.status(500).send({ success: false, message: 'Something went wrong.'})
+      return;
+    }
     res.status(200).send(res.body);
   },
   template: (params, query) => {

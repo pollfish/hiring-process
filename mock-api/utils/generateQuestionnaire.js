@@ -1,16 +1,9 @@
 const faker = require('faker');
 class Question {
-  constructor({ order }) {
+  constructor() {
     this.id = faker.random.uuid();
     this.prompt = `Would you consider buying "${faker.commerce.productName()}"`;
-    this.order = order;
-    this.answers = [{
-      order: 1,
-      body: 'Yes',
-    }, {
-      order: 2,
-      body: 'No',
-    }];
+    this.answers = ['Yes', 'No', 'Maybe'];
   }
 }
 
@@ -19,7 +12,7 @@ const generateQuestionnaire = () => {
   const numberOfQuestions = Math.floor(Math.random() * Math.floor(maxQuestions));
   let questions = [];
   for (var i = 0; i < numberOfQuestions; i++) {
-    const question = new Question({ order: i });
+    const question = new Question();
     questions = [...questions, question];
   }
 

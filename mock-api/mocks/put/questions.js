@@ -5,7 +5,7 @@ const editQuestion = {
   path: constants.endpoints.QUESTION_PUT,
   method: 'PUT',
   render: (req, res, next) => {
-    if (!req.query.debug && shouldFail()) {
+    if (shouldFail(req.query)) {
       res.status(500).send({ success: false, message: 'Something went wrong.'})
       return;
     }

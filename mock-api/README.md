@@ -59,11 +59,6 @@ There is none. This is used locally, only for the purposes of the assignment and
 { success: false, message: 'Bad Request', error: 'Message explaining the error received' }
 ```
 
-### Server Errors
-
-To immitate real production use, some of the endpoints will fail with 500 errors at times. You are encouraged to try and gracefully handle them. If you don't want to handle these errors for any reason you can pass a parameter to each endpoint
-`?debug=true` and the endpoint will respect your wishes and not fail.
-
 ### Models
 
 For the purposes of this assignment the only model that exists is that of a question that is containing an array of answers.
@@ -74,14 +69,7 @@ Question Model
 {
   id: String, // provided always by the storage.
   prompt: String, // the title of the question
-  order: Integer, // the order by which they should be shown
-  answers: Array[Answer]
-}
-
-Answer Model 
-{
-  order: Integer, // the order by which they should be shown
-  body: String // The title of the answer
+  answers: Array[String]
 }
 
 
@@ -104,62 +92,22 @@ Status: 200 OK
     {
       "id": "478ef726-bceb-4547-af89-77c979d7486e",
       "prompt": "Would you consider buying \"Unbranded Wooden Fish\"",
-      "order": 0,
-      "answers": [
-        {
-          "order": 1,
-          "body": "Yes"
-        },
-        {
-          "order": 2,
-          "body": "No"
-        }
-      ]
+      "answers": [ "Yes", "No" ]
     },
     {
       "id": "67aa65be-cd5c-428f-a937-33e685d081ac",
       "prompt": "Would you consider buying \"Gorgeous Granite Tuna\"",
-      "order": 1,
-      "answers": [
-        {
-          "order": 1,
-          "body": "Yes"
-        },
-        {
-          "order": 2,
-          "body": "No"
-        }
-      ]
+      "answers": [ "Yes", "No" ]
     },
     {
       "id": "713190bf-5d87-4fb5-a3a5-23cbbceba509",
       "prompt": "Would you consider buying \"Awesome Frozen Shirt\"",
-      "order": 2,
-      "answers": [
-        {
-          "order": 1,
-          "body": "Yes"
-        },
-        {
-          "order": 2,
-          "body": "No"
-        }
-      ]
+      "answers": [ "Yes", "No" ]
     },
     {
       "id": "09a5b26b-a8b0-4ffd-8270-744724c9f5de",
       "prompt": "Would you consider buying \"Intelligent Concrete Chair\"",
-      "order": 3,
-      "answers": [
-        {
-          "order": 1,
-          "body": "Yes"
-        },
-        {
-          "order": 2,
-          "body": "No"
-        }
-      ]
+      "answers": [ "Yes", "No" ]
     }
   ]
 }
@@ -181,30 +129,10 @@ ex:
 ```js
 [{
   "prompt": "Would you consider buying \"Awesome Frozen Shirt\"",
-  "order": 1,
-  "answers": [
-    {
-      "order": 1,
-      "body": "Yes"
-    },
-    {
-      "order": 2,
-      "body": "No"
-    }
-  ]
+  "answers": ["Yes", "No"]
 },
 {
-  "order": 2,
-  "answers": [
-    {
-      "order": 1,
-      "body": "Yes"
-    },
-    {
-      "order": 2,
-      "body": "No"
-    }
-  ]
+  "answers": ["Yes", "No"]
 }]
  ```
  
@@ -234,8 +162,7 @@ PUT /api/questions/:question_id
 | Name         | Type        | Description
 |:-------------|:------------|:--------------------
 | Prompt       | String      | The title of the question
-| Order        | Integer     | The order of this question. **Warning** Changing the order of a single question without re-creating the whole questionnaire may mess up the order of the rest of the questions. Use with caution
-| Answers      | Array       | An array of answers objects.
+| Answers      | Array       | An array of answers.
 #### Response
 ```
 Status: 200 OK
@@ -255,3 +182,24 @@ npm run generate-data
 ```
 
 and a random number of questions 0-10 will be generated in the database.
+
+### Bonus Points
+#### Server Errors
+
+To immitate real production use, some of the endpoints can fail with 500 errors at random intervals using a true RNG (...Math.random). Use
+`?env=production` and the endpoint will respect your wishes and fail randomly.
+
+
+## FAQ 
+
+### Should i create my own unique id's for each question?
+
+The id property should be handled by the storage API. If you send a question without an id you will receive it on the response with the id populated. This is only to immitate real use.
+
+### How should i handle the question and/or answer ordering?
+
+Using the array index for ordering is enough. Array order is guaranteed in Javascript
+
+### Should i use the edit question endpoint or can i work only with the create questionnaire?
+
+Whichever suits you best. It is not required to use both endpoints in the same project.
