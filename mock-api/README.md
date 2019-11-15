@@ -186,8 +186,8 @@ and a random number of questions 0-10 will be generated in the database.
 ### Bonus Points
 #### Server Errors
 
-To immitate real production use, some of the endpoints can fail with 500 errors at random intervals using a true RNG (...Math.random). Use
-`?env=production` and the endpoint will respect your wishes and fail randomly.
+To immitate real production use, some of the endpoints can fail with 500 errors at random intervals using a true RNG algorithm (...`Math.random`). Use
+`?env=production` on any endpoint and it will respect your wishes and fail randomly.
 
 
 ## FAQ 
